@@ -5,15 +5,17 @@
 
 < envPaths
 
+cd $(TOP)
+
 epicsEnvSet("EPICS_CA_AUTO_ADDR_LIST", "NO")
-epicsEnvSet("EPICS_CA_ADDR_LIST", "10.23.0.255")
+epicsEnvSet("EPICS_CA_ADDR_LIST", "10.2.0.255")
 
 ## Register all support components
 dbLoadDatabase("$(TOP)/dbd/feedback.dbd",0,0)
 feedback_registerRecordDeviceDriver(pdbbase) 
 
 ## Load record instances
-dbLoadTemplate("$(TOP)/db/fb_epid.substitution")
+dbLoadTemplate("$(TOP)/db/fb_epid.substitutions")
 
 ## autosave/restore machinery
 save_restoreSet_Debug(0)
@@ -27,12 +29,7 @@ set_pass0_restoreFile("info_positions.sav")
 set_pass0_restoreFile("info_settings.sav")
 set_pass1_restoreFile("info_settings.sav")
 
-asSetFilename("/epics/xf/23id/xf23id.acf")
-
-
 iocInit()
-
-caPutLogInit("xf23id-ca:7004", 0)
 
 ## more autosave/restore machinery
 
@@ -42,4 +39,4 @@ makeAutosaveFiles()
 create_monitor_set("info_positions.req", 5 , "")
 create_monitor_set("info_settings.req", 15 , "")
 
-dbl > "/cf-update/xf23id2-ioc1.feedback.dbl"
+dbl > "/cf-update/xf02id1-ioc1.feedback.dbl"

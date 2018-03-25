@@ -1,9 +1,14 @@
 file "db/fb_epid.db" {
-	    pattern { Sys , Dev , IN , OUT , MODE , CALC , 
-		          PERMIT1 , PERMIT2 , PERMIT3, PERMIT4 ,
-				  PREC , EGU , IEGU , OEGU }
-		{ "XF:23ID2-OP", "{FBck}", "XF:23ID2-BI{Diag:6-Cam:1}Stats1:CX-I CPP", 
-		  "XF:23IDA-OP:1{Mir:1-Ax:FPit}Mtr_POS_SP PP" , "PID" , "A&B" ,
+	    pattern { 
+		Sys , Dev , 
+                IN , OUT , MODE , CALC , 
+	        PERMIT1 , PERMIT2 , PERMIT3, PERMIT4 ,
+	        PREC , EGU , IEGU , OEGU 
+	    }
+		{ "XF:02IDC-OP", "{FBck}", 
+                  "XF:02IDC-BI{Slt:1-Cam:15_1}Sats1:CentroidX_RBV CPP", 
+		  "XF:02IDA-OP{Mir:1-Ax:4_Pitch}Mtr PP" , 
+                  "PID" , "A&B" ,
 		  "" , "" , "" , "" ,
 		  "3" , "" , "pix" , "urad" }
 }
